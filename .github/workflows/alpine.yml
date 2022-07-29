@@ -2,12 +2,9 @@ name: Ci (alpine)
 on:
   workflow_dispatch:
     inputs:
-      sshPublicKey:
-        description: 'SSH public key'
-        required: true
       exitCode:
         description: 'When set to non-zero, a step will fail causing the SSH server to be started'
-        required: true
+        required: false
         default: "0"
 
 jobs:
@@ -34,10 +31,3 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-vm_cus.qcow2
-
-      - name: Create SSH Access
-        uses: mdelillo/ssh-server-action@v1.0.0
-        timeout-minutes: 9999
-        with:
-          ngrok-authtoken: "${{ secrets.NGROK_AUTHTOKEN }}"
-          ssh-public-key: "${{ github.event.inputs.sshPublicKey }}"
