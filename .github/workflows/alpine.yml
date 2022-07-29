@@ -31,3 +31,8 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-vm_cus.qcow2
+
+      - name: test
+        run: |
+          pwd
+          ls
