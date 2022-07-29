@@ -1,3 +1,5 @@
+### contributors: Ash,AKPR
+
 name: Alpine VM Image Build
 on:
   workflow_dispatch:
@@ -6,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install and Setup Essentials
         run: |
